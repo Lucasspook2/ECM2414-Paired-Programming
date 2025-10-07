@@ -8,7 +8,10 @@ public class CardGame extends Thread {
 
     public static void main (String args []){
         (new CardGame()).start();
-        (new Player()).start();
+        Player player1 = new Player("player1");
+        player1.start();
+        System.out.println("name = " + player1.name);
+
     }
 
 }
