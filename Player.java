@@ -1,13 +1,16 @@
+import java.util.*;
+
 public class Player extends Thread{
     private final int playername;
     private final int preferredValue;
-    private final List<Card> hand;
+    private final ArrayList<Card> hand;
 
-    public Player(String playername){
+    public Player(int playername, int preferredValue){
         this.playername = playername;
-        this.preferredValue = playername;
-        this.hand = new ArrayList<>();
+        this.preferredValue = preferredValue;
+        this.hand = new ArrayList<Card>();
     }
+
     public void run () {
         System.out.println("player thread!");
 
@@ -22,11 +25,12 @@ public class Player extends Thread{
     //discard card that is not prefferred value
     public Card discardCard() {
         for (Card card : hand) {
-            if (card.getValue() != preferreedValue) {
+            if (card.getValue() != preferredValue) {
                 hand.remove(card);
                 return card;
             }
         }
+        return hand.get(0);
     }
 
 
