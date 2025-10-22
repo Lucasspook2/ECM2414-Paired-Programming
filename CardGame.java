@@ -48,7 +48,7 @@ public class CardGame extends Thread {
     System.out.println("file chosen = " + pack_name);
     
 
-    ArrayList<Integer> pack = inputPack.getPack("input.txt");
+    ArrayList<Integer> pack = inputPack.getPack(pack_name);
         for (int i = 0; i < pack.size(); i++){
             System.out.println(pack.get(i));
         }
