@@ -22,15 +22,21 @@ public class CardGame extends Thread {
     public static void main (String args []){
     
     Scanner scanner = new Scanner(System.in);
+    int player_count = 0;
 
     boolean valid = false;
     while (valid == false){
         System.out.println("Please enter the number of players:");
         try{
-        int player_count = Integer.parseInt(scanner.nextLine());
+        player_count = Integer.parseInt(scanner.nextLine());
         valid = true;
         } catch (NumberFormatException e){
+            System.out.println("Invalid input!");
             valid = false;
+        }
+        if(player_count <= 0){
+            valid = false;
+            System.out.println("Invalid input!");
         }
     }
 
@@ -39,8 +45,10 @@ public class CardGame extends Thread {
     while(valid == false){
         System.out.println("Please enter location of pack to load:");
          pack_name = scanner.nextLine();
-        if (FileSearch(pack_name) == true){
+        if (FileSearch(pack_name) == true && inputPack.countLines(pack_name) == (8 * player_count)){
             valid = true;
+        } else{
+            System.out.println("Invalid input!");
         }
     }
     
@@ -49,9 +57,9 @@ public class CardGame extends Thread {
     
 
     ArrayList<Integer> pack = inputPack.getPack(pack_name);
-        for (int i = 0; i < pack.size(); i++){
-            System.out.println(pack.get(i));
-        }
+       // for (int i = 0; i < pack.size(); i++){
+         //   System.out.println(pack.get(i));
+        //}
 
   }
 

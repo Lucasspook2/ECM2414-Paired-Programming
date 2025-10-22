@@ -19,4 +19,16 @@ public class inputPack{
     }
 
     }
+
+    public static int countLines(String file){
+        int count = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while (br.readLine() != null) {
+                count++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 }
