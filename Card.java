@@ -1,6 +1,6 @@
 //this class represents a singular card in the game
 public class Card {
-   // private final int value;
+    private final int value;
     
     public Card(int value) {
         this.value = value; //each card will be assigned a positive value (1, 2, 3...) 
