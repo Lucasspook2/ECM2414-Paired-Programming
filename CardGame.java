@@ -8,6 +8,11 @@ import java.util.*;
 public class CardGame extends Thread {
 
 
+    public static boolean FileSearch(String fileName){
+        File file = new File(fileName);
+        return file.exists() && file.isFile();
+    }
+
     public void run() {
         System.out.println("hello Thread");
         
@@ -15,6 +20,34 @@ public class CardGame extends Thread {
     }
 
     public static void main (String args []){
+    
+    Scanner scanner = new Scanner(System.in);
+
+    boolean valid = false;
+    while (valid == false){
+        System.out.println("Please enter the number of players:");
+        try{
+        int player_count = Integer.parseInt(scanner.nextLine());
+        valid = true;
+        } catch (NumberFormatException e){
+            valid = false;
+        }
+    }
+
+    valid = false;
+    String pack_name = "";
+    while(valid == false){
+        System.out.println("Please enter location of pack to load:");
+         pack_name = scanner.nextLine();
+        if (FileSearch(pack_name) == true){
+            valid = true;
+        }
+    }
+    
+
+    System.out.println("file chosen = " + pack_name);
+    
+
     ArrayList<Integer> pack = inputPack.getPack("input.txt");
         for (int i = 0; i < pack.size(); i++){
             System.out.println(pack.get(i));
