@@ -56,10 +56,11 @@ public class CardGame extends Thread {
     System.out.println("file chosen = " + pack_name);
     
 
-    ArrayList<Integer> pack = inputPack.getPack(pack_name);
-        //for (int i = 0; i < pack.size(); i++){
-         //   System.out.println(pack.get(i));
-        //}
+    ArrayList<Card> pack = inputPack.getPack(pack_name);
+        for(Card i : pack){
+            System.out.println(i.getValue());
+        }
+       
 
         (new CardGame()).start();
         Player player1 = new Player(1, 6);
