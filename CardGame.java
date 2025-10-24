@@ -57,14 +57,20 @@ public class CardGame extends Thread {
     
 
     ArrayList<Card> pack = inputPack.getPack(pack_name);
-        for(Card i : pack){
-            System.out.println(i.getValue());
-        }
-       
+    //for(Card i : pack){
+    //    System.out.println(i.getValue());
+    //}
+    ArrayList<Player> playerList = new ArrayList<Player>();
+    for (int i = 0; i < player_count; i ++){
+        playerList.add(new Player(i, i));
+    }
 
-        (new CardGame()).start();
-        Player player1 = new Player(1, 6);
-        player1.start();
+    //for(Player i : playerList){
+     //   System.out.println(i.playername);
+   // }
+
+    (new CardGame()).start();
+    
 
   }
 

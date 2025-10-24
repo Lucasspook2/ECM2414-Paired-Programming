@@ -11,6 +11,9 @@ public class Player extends Thread{
         this.hand = new ArrayList<Card>();
     }
 
+    
+
+    
     public void run () {
         System.out.println("player thread!");
 
