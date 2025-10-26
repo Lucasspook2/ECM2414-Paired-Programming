@@ -7,14 +7,14 @@ public class Card {
         // the value is decided by the input pack file CODE IN CARDGAME!!
     }
     
-    public int getValue() {
+    public synchronized int getValue() {
         return value;
     } //returns the value as a string
     
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    } //function checks if two cards are equal to each other 
+    //@Override
+   // public synchronized String toString() {
+    //    return String.valueOf(value);
+   // } //function checks if two cards are equal to each other 
     //helpful to determine if sll cards are equal and if a player has won
     //returns True if they do and False if not
     

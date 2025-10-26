@@ -11,7 +11,13 @@ public class Player extends Thread{
         this.hand = new ArrayList<Card>();
     }
 
-    
+    public synchronized int getPlayerName(){
+        return this.playername;
+    }
+
+    public synchronized ArrayList<Card> getHand(){
+        return this.hand;
+    }
 
     
     public void run () {

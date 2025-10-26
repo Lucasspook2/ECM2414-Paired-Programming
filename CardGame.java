@@ -57,17 +57,65 @@ public class CardGame extends Thread {
     
 
     ArrayList<Card> pack = inputPack.getPack(pack_name);
-    //for(Card i : pack){
-    //    System.out.println(i.getValue());
-    //}
+    
     ArrayList<Player> playerList = new ArrayList<Player>();
-    for (int i = 0; i < player_count; i ++){
+    for (int i = 1; i < player_count + 1; i ++){
         playerList.add(new Player(i, i));
     }
 
-    //for(Player i : playerList){
-     //   System.out.println(i.playername);
-   // }
+    for(int i = 0; i < 4; i ++){
+        for(Player j : playerList){
+        j.addCard(pack.remove(0));
+        }
+    }
+
+    for(Player j : playerList){
+        System.out.println("Player " + j.getPlayerName() + " hand:");
+        for(Card i : j.getHand()){
+            System.out.println(i.getValue());
+        }
+    }
+
+    System.out.println();
+    System.out.println("remaining pack:");
+
+    for(Card i : pack){
+       System.out.println(i.getValue());
+    }
+    
+    ArrayList<Deck> deckList = new ArrayList<Deck>();
+    for (int i = 1; i < player_count + 1; i ++){
+        deckList.add(new Deck(i));
+    }
+
+    System.out.println();
+    System.out.println("decks:");
+
+    for(Deck i : deckList){
+       System.out.println(i.getContents());
+    }
+
+    
+
+    int counter = 0;
+    while(pack.size() > 0){
+        System.out.println("Adding card " + pack.get(0).getValue() + " to deck " + deckList.get((counter % player_count)).getName());
+        deckList.get((counter % player_count)).addCard(pack.remove(0));
+        counter ++;
+    }
+
+    //for (int i = 0; i < pack.size() -1 ; i++){
+    //    deckList.get((i % player_count)).addCard(pack.remove(0));
+    //}
+
+    for (Deck i : deckList){
+        System.out.println("Deck " + i.getName());
+        for(Card j : i.getContents()){
+            System.out.println(j.getValue());;
+        }
+    }
+    
+
 
     (new CardGame()).start();
     
