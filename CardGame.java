@@ -114,6 +114,24 @@ public class CardGame extends Thread {
             System.out.println(j.getValue());;
         }
     }
+
+    for (int i = 0; i < player_count - 1; i++){
+
+        playerList.get(i).setDiscardDeck(deckList.get((i+1 % player_count)));
+        playerList.get(i).setDrawDeck(deckList.get(i));
+    }
+
+    playerList.get(player_count-1).setDiscardDeck(deckList.get(0));
+    playerList.get(player_count -1).setDrawDeck(deckList.get(player_count-1));
+
+
+
+
+    for(Player i : playerList){
+        System.out.println("Player " + i.getPlayerName() + " draws from deck " + i.getDrawDeck().getName());
+        System.out.println("Player " + i.getPlayerName() + " discards to deck " + i.getDiscardDeck().getName());
+        System.out.println();
+    }
     
 
 
