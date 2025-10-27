@@ -2,10 +2,14 @@
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.CyclicBarrier;
 
 //import inputPack;
 
 public class CardGame extends Thread {
+
+    public static ArrayList<Player> playerList = new ArrayList<Player>();
+
 
 
     public static boolean FileSearch(String fileName){
@@ -15,6 +19,10 @@ public class CardGame extends Thread {
 
     public void run() {
         System.out.println("hello Thread");
+
+        for(Player i : playerList){
+            i.start();
+        }
         
 
     }
@@ -40,6 +48,9 @@ public class CardGame extends Thread {
         }
     }
 
+
+    CyclicBarrier barrier = new CyclicBarrier(player_count);
+
     valid = false;
     String pack_name = "";
     while(valid == false){
@@ -58,9 +69,9 @@ public class CardGame extends Thread {
 
     ArrayList<Card> pack = inputPack.getPack(pack_name);
     
-    ArrayList<Player> playerList = new ArrayList<Player>();
+    
     for (int i = 1; i < player_count + 1; i ++){
-        playerList.add(new Player(i, i));
+        playerList.add(new Player(i, i, barrier));
     }
 
     for(int i = 0; i < 4; i ++){
@@ -119,6 +130,7 @@ public class CardGame extends Thread {
 
         playerList.get(i).setDiscardDeck(deckList.get((i+1 % player_count)));
         playerList.get(i).setDrawDeck(deckList.get(i));
+        playerList.get(i).setPlayerList(playerList);
     }
 
     playerList.get(player_count-1).setDiscardDeck(deckList.get(0));
