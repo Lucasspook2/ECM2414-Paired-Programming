@@ -1,0 +1,43 @@
+player 1 running!
+Player 1 discards 6
+Player 1 draws 2
+Hand:
+2 
+11 
+4 
+2 
+Player 1 discards 2
+Player 1 draws 2
+Hand:
+11 
+4 
+2 
+2 
+Player 1 discards 11
+Player 1 draws 6
+Hand:
+4 
+2 
+2 
+6 
+Player 1 discards 4
+Player 1 draws 13
+Hand:
+2 
+2 
+6 
+13 
+Player 1 discards 2
+Player 1 draws 9
+Hand:
+2 
+6 
+13 
+9 
+Player 2 has informed player: 1 of their victory.
+Player 1 exiting.
+Player 1's final hand:
+2 
+6 
+13 
+9 

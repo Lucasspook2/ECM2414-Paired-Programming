@@ -1,0 +1,43 @@
+player 4 running!
+Player 4 discards 9
+Player 4 draws 2
+Hand:
+7 
+3 
+5 
+2 
+Player 4 discards 7
+Player 4 draws 2
+Hand:
+3 
+5 
+2 
+2 
+Player 4 discards 3
+Player 4 draws 2
+Hand:
+5 
+2 
+2 
+2 
+Player 4 discards 5
+Player 4 draws 7
+Hand:
+2 
+2 
+2 
+7 
+Player 4 discards 2
+Player 4 draws 1
+Hand:
+2 
+2 
+7 
+1 
+Player 2 has informed player: 4 of their victory.
+Player 4 exiting.
+Player 4's final hand:
+2 
+2 
+7 
+1 

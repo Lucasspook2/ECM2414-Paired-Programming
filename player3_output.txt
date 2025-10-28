@@ -1,0 +1,43 @@
+player 3 running!
+Player 3 discards 1
+Player 3 draws 2
+Hand:
+12 
+14 
+10 
+2 
+Player 3 discards 12
+Player 3 draws 2
+Hand:
+14 
+10 
+2 
+2 
+Player 3 discards 14
+Player 3 draws 2
+Hand:
+10 
+2 
+2 
+2 
+Player 3 discards 10
+Player 3 draws 8
+Hand:
+2 
+2 
+2 
+8 
+Player 3 discards 2
+Player 3 draws 10
+Hand:
+2 
+2 
+8 
+10 
+Player 2 has informed player: 3 of their victory.
+Player 3 exiting.
+Player 3's final hand:
+2 
+2 
+8 
+10 

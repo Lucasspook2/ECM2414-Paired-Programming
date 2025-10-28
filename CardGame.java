@@ -9,8 +9,13 @@ import java.util.concurrent.CyclicBarrier;
 public class CardGame extends Thread {
 
     public static ArrayList<Player> playerList = new ArrayList<Player>();
+    public static ArrayList<Deck> deckList = new ArrayList<Deck>();
 
 
+ 
+    
+    
+    
 
     public static boolean FileSearch(String fileName){
         File file = new File(fileName);
@@ -24,6 +29,22 @@ public class CardGame extends Thread {
             i.start();
         }
         
+
+    }
+
+    public static void endGame(int winner){//GAME SHOULD WORK, TESTED TWICE 
+    try{//MUST DELETE DECK AND PLAYER FILES BEFORE RUNNING!!!!!
+        for(Deck i : deckList){
+        i.getFileWriter().write("Deck" + i.getContents().toString());
+    }
+    } catch (IOException e){
+        System.err.println("Could not write to deck output file: " + e.getMessage());
+    }
+    for(Player i : playerList){
+        if (i.getPlayerName() != winner){
+            i.cleanupOnExit(winner);
+        }
+    }
 
     }
 
@@ -71,7 +92,12 @@ public class CardGame extends Thread {
     
     
     for (int i = 1; i < player_count + 1; i ++){
-        playerList.add(new Player(i, i, barrier));
+        try{
+            playerList.add(new Player(i, i, barrier, new FileWriter("player"+(i)+"_output.txt",true)));//adds players to player list
+            //creates output file for each player
+        } catch (IOException e){
+            System.err.println("Could not create output file for player " + i + ": " + e.getMessage());
+        }
     }
 
     for(int i = 0; i < 4; i ++){
@@ -95,8 +121,12 @@ public class CardGame extends Thread {
     }
     
     ArrayList<Deck> deckList = new ArrayList<Deck>();
-    for (int i = 1; i < player_count + 1; i ++){
-        deckList.add(new Deck(i));
+    for (int i = 1; i < player_count + 1; i ++){//one deck for each player
+        try{
+            deckList.add(new Deck(i,new FileWriter("deck"+(i)+"_output.txt",true)));//adds decks to deck list
+        } catch (IOException e){
+            System.err.println("Could not create output file for deck " + i + ": " + e.getMessage());
+        }
     }
 
     System.out.println();
@@ -126,11 +156,13 @@ public class CardGame extends Thread {
         }
     }
 
+
+
     for (int i = 0; i < player_count - 1; i++){
 
         playerList.get(i).setDiscardDeck(deckList.get((i+1 % player_count)));
         playerList.get(i).setDrawDeck(deckList.get(i));
-        playerList.get(i).setPlayerList(playerList);
+  
     }
 
     playerList.get(player_count-1).setDiscardDeck(deckList.get(0));

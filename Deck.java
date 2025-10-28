@@ -1,15 +1,22 @@
+import java.io.FileWriter;
 import java.util.*;
 public class Deck{
 
     private int name;
     private ArrayList<Card> contents;
-
-    public Deck(int name){
+    private FileWriter outFile;
+    
+    
+    public Deck(int name, FileWriter outFile){
         this.name = name;
         contents = new ArrayList<Card>();
+        this.outFile = outFile;
     }
 
- 
+    public FileWriter getFileWriter(){
+        return this.outFile;
+    }
+
 
     public int getName(){
         return this.name;

@@ -1,0 +1,30 @@
+player 2 running!
+Player 2 discards 10
+Player 2 draws 2
+Hand:
+13 
+8 
+9 
+2 
+Player 2 discards 13
+Player 2 draws 2
+Hand:
+8 
+9 
+2 
+2 
+Player 2 discards 8
+Player 2 draws 2
+Hand:
+9 
+2 
+2 
+2 
+Player 2 discards 9
+Player 2 draws 2
+Hand:
+2 
+2 
+2 
+2 
+Victory for player 2
