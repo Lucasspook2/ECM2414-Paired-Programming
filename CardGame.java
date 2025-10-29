@@ -3,6 +3,8 @@
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 //import inputPack;
 
@@ -10,12 +12,17 @@ public class CardGame extends Thread {
 
     public static ArrayList<Player> playerList = new ArrayList<Player>();
     public static ArrayList<Deck> deckList = new ArrayList<Deck>();
-
-
+    
+    private static final AtomicBoolean gameOver = new AtomicBoolean(false);
+    private static final AtomicInteger winner = new AtomicInteger(-1);
  
+    public int getWinner() {
+        return winner.get();
+    }
     
-    
-    
+    public static boolean isGameOver() {
+        return gameOver.get();
+    }
 
     public static boolean FileSearch(String fileName){
         File file = new File(fileName);
@@ -31,7 +38,59 @@ public class CardGame extends Thread {
         
 
     }
+/*
+ //new function for deck file writing
+public static void endGame(int winner) {
+    // Write deck contents to deck files
+    for (Deck deck : deckList) {
+        try (FileWriter fw = deck.getFileWriter()) { // try-with-resources auto-closes
+            fw.write("Deck " + deck.getName() + " contents: " + deck.getContents().toString() + System.lineSeparator());
+            fw.flush();
+        } catch (IOException e) {
+            System.err.println("Could not write to deck output file for deck " + deck.getName() + ": " + e.getMessage());
+        }
+    }
+    // Notify and clean up players
+    for (Player p : playerList) {
+        if (p.getPlayerName() != winner) { 
+            p.cleanupOnExit(winner);
+        }
+    }
+}
+ */
+    public static void endGame(int winnerplayer) {
+        gameOver.set(true);//will signal players to stop playing
+        winner.set(winnerplayer);//sets winner variable
+        
+        for (Player p : playerList) {//player cleanup and handling
+            if (p.getPlayerName() != winnerplayer) {
+                p.cleanupOnExit(winnerplayer);
+            }
+        }
+        
+        for (Deck deck : deckList) {//deck cleanup and finalising
+        try (FileWriter fw = deck.getFileWriter()) {
+            
+            StringBuilder sb = new StringBuilder();
+            sb.append("deck").append(deck.getName()).append(" contents:");
+            for (Card c : deck.getContents()) {
+                sb.append(" ").append(c.getValue());
+            }
+            fw.write(sb.toString());
+            fw.write(System.lineSeparator());
+            fw.flush();
+        } catch (IOException e) {
+            System.err.println("Could not write to deck output file for deck " + deck.getName() + ": " + e.getMessage());
+        }
+        }
 
+    // notify and clean up players
+
+}
+
+
+    /*
+    //need to fix the deck files
     public static void endGame(int winner){//GAME SHOULD WORK, TESTED TWICE 
     try{//MUST DELETE DECK AND PLAYER FILES BEFORE RUNNING!!!!!
         for(Deck i : deckList){
@@ -45,9 +104,9 @@ public class CardGame extends Thread {
             i.cleanupOnExit(winner);
         }
     }
-
+ 
     }
-
+    */
     public static void main (String args []){
     
     Scanner scanner = new Scanner(System.in);
@@ -120,8 +179,8 @@ public class CardGame extends Thread {
        System.out.println(i.getValue());
     }
     
-    ArrayList<Deck> deckList = new ArrayList<Deck>();
-    for (int i = 1; i < player_count + 1; i ++){//one deck for each player
+    //ArrayList<Deck> deckList = new ArrayList<Deck>();
+    for (int i = 1;i <= player_count; i ++){//one deck for each player
         try{
             deckList.add(new Deck(i,new FileWriter("deck"+(i)+"_output.txt",true)));//adds decks to deck list
         } catch (IOException e){

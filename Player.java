@@ -75,20 +75,23 @@ public class Player extends Thread{
 
         System.out.println("");
         
-        while(!hasWon()){
-            Card i = discardCard();
-            writeLine("Player " + playername + " discards " + i.getValue());
-            discardDeck.discard(i);
-            Card j = drawDeck.draw();
-            writeLine("Player " + playername + " draws " + j.getValue());
-            addCard(j);
-            while (hand.size() > 4){
-                discardDeck.discard(discardCard());
-            }
-            writeLine("Hand:");
-            for(Card x : hand){
-                writeLine(x.getValue() + " ");
-            }
+        while(!CardGame.isGameOver()) {
+            
+            if(!hasWon()){
+                
+                Card i = discardCard();
+                writeLine("Player " + playername + " discards " + i.getValue());
+                discardDeck.discard(i);
+                Card j = drawDeck.draw();
+                writeLine("Player " + playername + " draws " + j.getValue());
+                addCard(j);
+                while (hand.size() > 4){
+                    discardDeck.discard(discardCard());
+                }
+                writeLine("Hand:");
+                for(Card x : hand){
+                    writeLine(x.getValue() + " ");
+                }
                 try {
                     barrier.await(); 
                 } catch (InterruptedException e) {
@@ -101,14 +104,17 @@ public class Player extends Thread{
                 } 
 
 
+        }else{
+            synchronized (CardGame.class) {
+                CardGame.endGame(this.playername);
+                writeLine("Victory for player " + playername);
+            }
         }
+    }
         
         
         
-        synchronized (CardGame.class) {
-            CardGame.endGame(this.playername);
-            writeLine("Victory for player " + playername);
-        }
+
 
 
 

@@ -11,6 +11,11 @@ public class Card {
         return value;
     } //returns the value as a string
     
+    @Override
+    public String toString() {
+        return Integer.toString(value);
+}
+
     //@Override
    // public synchronized String toString() {
     //    return String.valueOf(value);
