@@ -6,28 +6,37 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-//import inputPack;
 
 public class CardGame extends Thread {
+
+    //create list of players and list of decks 
 
     public static ArrayList<Player> playerList = new ArrayList<Player>();
     public static ArrayList<Deck> deckList = new ArrayList<Deck>();
     
     private static final AtomicBoolean gameOver = new AtomicBoolean(false);
     private static final AtomicInteger winner = new AtomicInteger(-1);
+
+    //find the winning player 
  
     public int getWinner() {
         return winner.get();
     }
+
+    //determine if the game is over
     
     public static boolean isGameOver() {
         return gameOver.get();
     }
 
+    //search if a file exists - used for checking validity of input packs 
+
     public static boolean FileSearch(String fileName){
         File file = new File(fileName);
         return file.exists() && file.isFile();
     }
+
+    //start the game thread 
 
     public void run() {
         System.out.println("hello Thread");
@@ -58,6 +67,9 @@ public static void endGame(int winner) {
     }
 }
  */
+
+
+    //method for handling the end of the game 
     public static void endGame(int winnerplayer) {
         gameOver.set(true);//will signal players to stop playing
         winner.set(winnerplayer);//sets winner variable
@@ -107,12 +119,18 @@ public static void endGame(int winner) {
  
     }
     */
+
+
+
     public static void main (String args []){
     
     Scanner scanner = new Scanner(System.in);
     int player_count = 0;
 
     boolean valid = false;
+
+    //checks for valid input of number of players 
+
     while (valid == false){
         System.out.println("Please enter the number of players:");
         try{
@@ -128,11 +146,14 @@ public static void endGame(int winner) {
         }
     }
 
-
+    //creates a cyclic barrier that awaits the correct number of players 
     CyclicBarrier barrier = new CyclicBarrier(player_count);
 
     valid = false;
     String pack_name = "";
+
+    //checks for validity of the pack file 
+
     while(valid == false){
         System.out.println("Please enter location of pack to load:");
          pack_name = scanner.nextLine();
@@ -143,28 +164,34 @@ public static void endGame(int winner) {
         }
     }
     
+    scanner.close();
 
     System.out.println("file chosen = " + pack_name);
+
     
+    
+    //puts the pack file into an array list 
 
     ArrayList<Card> pack = inputPack.getPack(pack_name);
     
-    
+    //adds players to the list of players 
     for (int i = 1; i < player_count + 1; i ++){
         try{
-            playerList.add(new Player(i, i, barrier, new FileWriter("player"+(i)+"_output.txt",true)));//adds players to player list
+            playerList.add(new Player(i, i, barrier, new FileWriter("player"+(i)+"_output.txt",true)));
             //creates output file for each player
         } catch (IOException e){
             System.err.println("Could not create output file for player " + i + ": " + e.getMessage());
         }
     }
 
+    //deals out players hands 
     for(int i = 0; i < 4; i ++){
         for(Player j : playerList){
         j.addCard(pack.remove(0));
         }
     }
 
+    //outputs hands to command line
     for(Player j : playerList){
         System.out.println("Player " + j.getPlayerName() + " hand:");
         for(Card i : j.getHand()){
@@ -179,7 +206,7 @@ public static void endGame(int winner) {
        System.out.println(i.getValue());
     }
     
-    //ArrayList<Deck> deckList = new ArrayList<Deck>();
+    //creates decks
     for (int i = 1;i <= player_count; i ++){//one deck for each player
         try{
             deckList.add(new Deck(i,new FileWriter("deck"+(i)+"_output.txt",true)));//adds decks to deck list
@@ -191,12 +218,13 @@ public static void endGame(int winner) {
     System.out.println();
     System.out.println("decks:");
 
+    //outputs empty decks
     for(Deck i : deckList){
        System.out.println(i.getContents());
     }
 
     
-
+    //deals out the remaining cards from the pack to the decks 
     int counter = 0;
     while(pack.size() > 0){
         System.out.println("Adding card " + pack.get(0).getValue() + " to deck " + deckList.get((counter % player_count)).getName());
@@ -208,6 +236,7 @@ public static void endGame(int winner) {
     //    deckList.get((i % player_count)).addCard(pack.remove(0));
     //}
 
+    //outputs full decks 
     for (Deck i : deckList){
         System.out.println("Deck " + i.getName());
         for(Card j : i.getContents()){
@@ -216,7 +245,7 @@ public static void endGame(int winner) {
     }
 
 
-
+    //sets the decks each player should draw / discard to / from for players up to the penultimate one
     for (int i = 0; i < player_count - 1; i++){
 
         playerList.get(i).setDiscardDeck(deckList.get((i+1 % player_count)));
@@ -224,12 +253,14 @@ public static void endGame(int winner) {
   
     }
 
+
+    //sets decks for the last player 
     playerList.get(player_count-1).setDiscardDeck(deckList.get(0));
     playerList.get(player_count -1).setDrawDeck(deckList.get(player_count-1));
 
 
 
-
+    //outputs draw and discard deck names for each player
     for(Player i : playerList){
         System.out.println("Player " + i.getPlayerName() + " draws from deck " + i.getDrawDeck().getName());
         System.out.println("Player " + i.getPlayerName() + " discards to deck " + i.getDiscardDeck().getName());
@@ -237,7 +268,7 @@ public static void endGame(int winner) {
     }
     
 
-
+    //starts game 
     (new CardGame()).start();
     
 

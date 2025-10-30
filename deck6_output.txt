@@ -1,1 +1,2 @@
 deck6 contents: 14 2 14 2 2
+deck6 contents: 7 14 6 8
