@@ -1,2 +1,0 @@
-deck2 contents: 13 10 13 13
-deck2 contents: 3 11 4

@@ -1,47 +1,4 @@
 player 2 running!
-Player 2 discards 3
-Player 2 draws 4
-Hand:
-4 
-3 
-4 
-4 
-Player 2 discards 4
-Player 2 draws 3
-Hand:
-3 
-4 
-4 
-3 
-Player 2 discards 3
-Player 2 draws 4
-Hand:
-4 
-4 
-3 
-4 
-Player 2 discards 4
-Player 2 draws 3
-Hand:
-4 
-3 
-4 
-3 
-Player 2 discards 4
-Player 2 draws 10
-Hand:
-3 
-4 
-3 
-10 
-Player 6 has informed player: 2 of their victory.
-Player 2 exiting.
-Player 2's final hand:
-3 
-4 
-3 
-10 
-player 2 running!
 Player 2 discards 7
 Player 2 draws 7
 Hand:

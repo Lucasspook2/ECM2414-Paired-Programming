@@ -1,34 +1,4 @@
 player 6 running!
-Player 6 discards 12
-Player 6 draws 12
-Hand:
-6 
-6 
-12 
-12 
-Player 6 discards 12
-Player 6 draws 6
-Hand:
-6 
-6 
-12 
-6 
-Player 6 discards 12
-Player 6 draws 12
-Hand:
-6 
-6 
-6 
-12 
-Player 6 discards 12
-Player 6 draws 6
-Hand:
-6 
-6 
-6 
-6 
-Victory for player 6
-player 6 running!
 Player 6 discards 8
 Player 6 draws 8
 Hand:

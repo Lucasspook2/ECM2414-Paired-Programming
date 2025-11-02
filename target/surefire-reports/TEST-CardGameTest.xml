@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="DeckTest" time="0.048" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="CardGameTest" time="0.047" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="java.specification.version" value="11"/>
@@ -56,8 +56,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="testAddCardAndContents" classname="DeckTest" time="0.005"/>
-  <testcase name="testDiscardCard" classname="DeckTest" time="0.004"/>
-  <testcase name="testGetName" classname="DeckTest" time="0.005"/>
-  <testcase name="testDrawCard" classname="DeckTest" time="0.004"/>
+  <testcase name="testFileSearch_nonExistingFile" classname="CardGameTest" time="0.006"/>
+  <testcase name="testMainInputSimulation" classname="CardGameTest" time="0.018"/>
+  <testcase name="testFileSearch_existingFile" classname="CardGameTest" time="0.006"/>
+  <testcase name="testGameOverAndWinner" classname="CardGameTest" time="0.009"/>
 </testsuite>

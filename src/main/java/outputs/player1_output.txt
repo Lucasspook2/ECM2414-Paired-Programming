@@ -1,47 +1,4 @@
 player 1 running!
-Player 1 discards 10
-Player 1 draws 13
-Hand:
-13 
-10 
-13 
-13 
-Player 1 discards 13
-Player 1 draws 10
-Hand:
-10 
-13 
-13 
-10 
-Player 1 discards 10
-Player 1 draws 13
-Hand:
-13 
-13 
-10 
-13 
-Player 1 discards 13
-Player 1 draws 10
-Hand:
-13 
-10 
-13 
-10 
-Player 1 discards 13
-Player 1 draws 1
-Hand:
-10 
-13 
-10 
-1 
-Player 6 has informed player: 1 of their victory.
-Player 1 exiting.
-Player 1's final hand:
-10 
-13 
-10 
-1 
-player 1 running!
 Player 1 discards 4
 Player 1 draws 4
 Hand:

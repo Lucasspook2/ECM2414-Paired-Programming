@@ -1,47 +1,4 @@
 player 5 running!
-Player 5 discards 14
-Player 5 draws 2
-Hand:
-2 
-14 
-2 
-2 
-Player 5 discards 2
-Player 5 draws 14
-Hand:
-14 
-2 
-2 
-14 
-Player 5 discards 14
-Player 5 draws 2
-Hand:
-2 
-2 
-14 
-2 
-Player 5 discards 2
-Player 5 draws 14
-Hand:
-2 
-14 
-2 
-14 
-Player 5 discards 2
-Player 5 draws 11
-Hand:
-14 
-2 
-14 
-11 
-Player 6 has informed player: 5 of their victory.
-Player 5 exiting.
-Player 5's final hand:
-14 
-2 
-14 
-11 
-player 5 running!
 Player 5 discards 1
 Player 5 draws 1
 Hand:

@@ -39,12 +39,11 @@ public class CardGame extends Thread {
     //start the game thread 
 
     public void run() {
-        System.out.println("hello Thread");
 
         for(Player i : playerList){
             i.start();
         }
-        
+
 
     }
 /*
@@ -76,11 +75,13 @@ public static void endGame(int winner) {
         
         for (Player p : playerList) {//player cleanup and handling
             if (p.getPlayerName() != winnerplayer) {
+                System.out.println("cleaning player " + p.getPlayerName());
                 p.cleanupOnExit(winnerplayer);
             }
         }
         
         for (Deck deck : deckList) {//deck cleanup and finalising
+        System.out.println("writing deck " + deck.getName());
         try (FileWriter fw = deck.getFileWriter()) {
             
             StringBuilder sb = new StringBuilder();
@@ -93,6 +94,10 @@ public static void endGame(int winner) {
             fw.flush();
         } catch (IOException e) {
             System.err.println("Could not write to deck output file for deck " + deck.getName() + ": " + e.getMessage());
+        }
+
+        for(Player i : playerList){
+            i.interrupt();
         }
         }
 
@@ -164,7 +169,7 @@ public static void endGame(int winner) {
         }
     }
     
-    scanner.close();
+    
 
     System.out.println("file chosen = " + pack_name);
 
@@ -177,7 +182,7 @@ public static void endGame(int winner) {
     //adds players to the list of players 
     for (int i = 1; i < player_count + 1; i ++){
         try{
-            playerList.add(new Player(i, i, barrier, new FileWriter("player"+(i)+"_output.txt",true)));
+            playerList.add(new Player(i, i, barrier, new FileWriter("outputs/player"+(i)+"_output.txt", false)));
             //creates output file for each player
         } catch (IOException e){
             System.err.println("Could not create output file for player " + i + ": " + e.getMessage());
@@ -191,6 +196,7 @@ public static void endGame(int winner) {
         }
     }
 
+    /* 
     //outputs hands to command line
     for(Player j : playerList){
         System.out.println("Player " + j.getPlayerName() + " hand:");
@@ -199,6 +205,7 @@ public static void endGame(int winner) {
         }
     }
 
+    
     System.out.println();
     System.out.println("remaining pack:");
 
@@ -206,28 +213,29 @@ public static void endGame(int winner) {
        System.out.println(i.getValue());
     }
     
+    */
     //creates decks
-    for (int i = 1;i <= player_count; i ++){//one deck for each player
+    for (int i = 1; i <= player_count; i ++){//one deck for each player
         try{
-            deckList.add(new Deck(i,new FileWriter("deck"+(i)+"_output.txt",true)));//adds decks to deck list
+            deckList.add(new Deck(i,new FileWriter("outputs/deck"+(i)+"_output.txt", false)));//adds decks to deck list
         } catch (IOException e){
             System.err.println("Could not create output file for deck " + i + ": " + e.getMessage());
         }
     }
 
-    System.out.println();
-    System.out.println("decks:");
+   // System.out.println();
+    //System.out.println("decks:");
 
     //outputs empty decks
     for(Deck i : deckList){
-       System.out.println(i.getContents());
+       //System.out.println(i.getContents());
     }
 
     
     //deals out the remaining cards from the pack to the decks 
     int counter = 0;
     while(pack.size() > 0){
-        System.out.println("Adding card " + pack.get(0).getValue() + " to deck " + deckList.get((counter % player_count)).getName());
+        //System.out.println("Adding card " + pack.get(0).getValue() + " to deck " + deckList.get((counter % player_count)).getName());
         deckList.get((counter % player_count)).addCard(pack.remove(0));
         counter ++;
     }
@@ -236,6 +244,7 @@ public static void endGame(int winner) {
     //    deckList.get((i % player_count)).addCard(pack.remove(0));
     //}
 
+    /* 
     //outputs full decks 
     for (Deck i : deckList){
         System.out.println("Deck " + i.getName());
@@ -243,7 +252,7 @@ public static void endGame(int winner) {
             System.out.println(j.getValue());;
         }
     }
-
+    */
 
     //sets the decks each player should draw / discard to / from for players up to the penultimate one
     for (int i = 0; i < player_count - 1; i++){
@@ -259,17 +268,30 @@ public static void endGame(int winner) {
     playerList.get(player_count -1).setDrawDeck(deckList.get(player_count-1));
 
 
-
+    /* 
     //outputs draw and discard deck names for each player
     for(Player i : playerList){
         System.out.println("Player " + i.getPlayerName() + " draws from deck " + i.getDrawDeck().getName());
         System.out.println("Player " + i.getPlayerName() + " discards to deck " + i.getDiscardDeck().getName());
         System.out.println();
     }
-    
+    */
 
     //starts game 
-    (new CardGame()).start();
+    
+    String ans = "";
+    
+    while(!ans.equals("y")  && !ans.equals("n") ){
+        System.out.println("Start game? (y/n)");
+        ans = scanner.nextLine();
+    }
+
+
+    scanner.close();
+    if(ans.equals("y")){
+        (new CardGame()).start();
+    }
+    
     
 
   }

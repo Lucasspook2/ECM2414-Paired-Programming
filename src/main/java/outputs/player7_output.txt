@@ -1,47 +1,4 @@
 player 7 running!
-Player 7 discards 1
-Player 7 draws 5
-Hand:
-5 
-1 
-5 
-5 
-Player 7 discards 5
-Player 7 draws 1
-Hand:
-1 
-5 
-5 
-1 
-Player 7 discards 1
-Player 7 draws 5
-Hand:
-5 
-5 
-1 
-5 
-Player 7 discards 5
-Player 7 draws 1
-Hand:
-5 
-1 
-5 
-1 
-Player 7 discards 5
-Player 7 draws 12
-Hand:
-1 
-5 
-1 
-12 
-Player 6 has informed player: 7 of their victory.
-Player 7 exiting.
-Player 7's final hand:
-1 
-5 
-1 
-12 
-player 7 running!
 Player 7 discards 11
 Player 7 draws 9
 Hand:

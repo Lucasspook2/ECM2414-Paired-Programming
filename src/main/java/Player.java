@@ -114,21 +114,19 @@ public class Player extends Thread{
                 } 
 
 
-        }else{
-            synchronized (CardGame.class) {
-                CardGame.endGame(this.playername);
-                writeLine("Victory for player " + playername);
+            }else{
+                synchronized (CardGame.class) {
+                    CardGame.endGame(this.playername);
+                    writeLine("Victory for player " + playername);
+                    System.out.println("Victory for player " + playername);
+                }
             }
+        
         }
+        
     }
-        
-        
-        
 
-
-
-
-    }
+     
     //player picks up a card
     public void addCard(Card card) {
         if (hand.size() < 4) { //each player has 4 cards
@@ -144,6 +142,8 @@ public class Player extends Thread{
             for (Card c : getHand()) {
                 writeLine(c.getValue() + " ");
             }
+        
+        
     }
 
     //discard card that is not preferred value

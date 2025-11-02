@@ -14,27 +14,30 @@ import java.util.*;
 
 class DeckTest {
 
+    //object to test on
     private Deck deck;
     
-
+    //resets environment before each test 
     @BeforeEach
     void setUp() throws IOException {
         FileWriter fw = new FileWriter("test_output.txt");
         deck = new Deck(1, fw);
     }
 
-
+    //tests getName()
     @Test
     void testGetName() {
         assertEquals(1, deck.getName());
     }
 
+    //tests addCard() and getContents()
     @Test 
     void testAddCardAndContents(){
         deck.addCard(new Card(5));
         assertEquals(5, deck.getContents().get(0).getValue());
     }
 
+    //tests discardCard()
     @Test 
     void testDiscardCard(){
         deck.addCard(new Card(1));
@@ -44,6 +47,7 @@ class DeckTest {
         assertEquals(4, deck.getContents().get(deck.getContents().size()-1).getValue());
     }
 
+    //tests drawCard()
     @Test 
     void testDrawCard(){
         deck.addCard(new Card(1));
