@@ -72,7 +72,7 @@ class PlayerTest {
 
     //tests that a player discards the card that is not the preffered value 
     @Test
-    void testDiscardCardRemovesNonPreferred() {
+    void testDiscardCard() {
         player.addCard(new Card(3)); // non-preferred
         player.addCard(new Card(5));
         player.addCard(new Card(5));

@@ -142,14 +142,15 @@ public static void endGame(int winner) {
         player_count = Integer.parseInt(scanner.nextLine());
         valid = true;
         } catch (NumberFormatException e){
-            System.out.println("Invalid input!");
+            System.out.println("Invalid input! Wrong number format");
             valid = false;
         }
-        if(player_count <= 0){
+        if(player_count <= 1){
             valid = false;
-            System.out.println("Invalid input!");
+            System.out.println("Invalid input! Illegal number of players");
         }
     }
+    System.out.println("Playing with " + player_count + " players");
 
     //creates a cyclic barrier that awaits the correct number of players 
     CyclicBarrier barrier = new CyclicBarrier(player_count);
@@ -165,7 +166,7 @@ public static void endGame(int winner) {
         if (FileSearch(pack_name) == true && inputPack.countLines(pack_name) == (8 * player_count)){
             valid = true;
         } else{
-            System.out.println("Invalid input!");
+            System.out.println("Invalid input! Pack not found");
         }
     }
     

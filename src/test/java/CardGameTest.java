@@ -49,7 +49,7 @@ class CardGameTest {
     //tests the methods at the end of the game
     @Test
     void testGameOverAndWinner() {
-        // Initially
+   
         assertFalse(CardGame.isGameOver());
         CardGame.endGame(1);
         assertTrue(CardGame.isGameOver());
@@ -58,7 +58,7 @@ class CardGameTest {
 
 
     @Test
-    void testMainInputSimulation() throws IOException {
+    void testMainAndInputs() throws IOException {
         //creates a temporary pack file to test with
         File packFile = File.createTempFile("pack", ".txt");
         //removes file when test is complete
@@ -74,7 +74,7 @@ class CardGameTest {
 
         
         //string to pass into the command line, navigates through the terminal prompts
-        String simulatedInput = "5\n" + packFile.getAbsolutePath() + "\n" + "y\n";
+        String simulatedInput = "x\n" + "-5\n"+ "5\n" + "invalid.txt\n" + packFile.getAbsolutePath() + "\n" + "y\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         
@@ -84,7 +84,11 @@ class CardGameTest {
         //reads the outputs and sees if they're what is expected 
         String output = outContent.toString();
         assertTrue(output.contains("Please enter the number of players"));
-        assertTrue(output.contains("file chosen = "));
+        assertTrue(output.contains("Invalid input! Wrong number format"));
+        assertTrue(output.contains("Invalid input! Illegal number of players"));
+        assertTrue(output.contains("Invalid input! Pack not found"));
+        assertTrue(output.contains("file chosen = " + packFile.getAbsolutePath()));
+        assertTrue(output.contains("Playing with 5 players"));
         
     }
 
