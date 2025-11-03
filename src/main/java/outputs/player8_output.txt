@@ -1,0 +1,198 @@
+player 8 running!
+Player 8 discards 14
+Player 8 draws 6
+Hand:
+7 
+9 
+13 
+6 
+Player 8 discards 7
+Player 8 draws 6
+Hand:
+9 
+13 
+6 
+6 
+Player 8 discards 9
+Player 8 draws 8
+Hand:
+13 
+6 
+6 
+8 
+Player 8 discards 13
+Player 8 draws 5
+Hand:
+6 
+6 
+8 
+5 
+Player 8 discards 6
+Player 8 draws 11
+Hand:
+6 
+8 
+5 
+11 
+Player 8 discards 6
+Player 8 draws 4
+Hand:
+8 
+5 
+11 
+4 
+Player 8 discards 5
+Player 8 draws 2
+Hand:
+8 
+11 
+4 
+2 
+Player 8 discards 11
+Player 8 draws 10
+Hand:
+8 
+4 
+2 
+10 
+Player 8 discards 4
+Player 8 draws 9
+Hand:
+8 
+2 
+10 
+9 
+Player 8 discards 2
+Player 8 draws 3
+Hand:
+8 
+10 
+9 
+3 
+Player 8 discards 10
+Player 8 draws 1
+Hand:
+8 
+9 
+3 
+1 
+Player 8 discards 9
+Player 8 draws 12
+Hand:
+8 
+3 
+1 
+12 
+Player 8 discards 3
+Player 8 draws 8
+Hand:
+8 
+1 
+12 
+8 
+Player 8 discards 1
+Player 8 draws 14
+Hand:
+8 
+12 
+8 
+14 
+Player 8 discards 12
+Player 8 draws 8
+Hand:
+8 
+8 
+14 
+8 
+Player 8 discards 14
+Player 8 draws 5
+Hand:
+8 
+8 
+8 
+5 
+Player 8 discards 5
+Player 8 draws 13
+Hand:
+8 
+8 
+8 
+13 
+Player 8 discards 13
+Player 8 draws 9
+Hand:
+8 
+8 
+8 
+9 
+Player 8 discards 9
+Player 8 draws 1
+Hand:
+8 
+8 
+8 
+1 
+Player 8 discards 1
+Player 8 draws 3
+Hand:
+8 
+8 
+8 
+3 
+Player 8 discards 3
+Player 8 draws 11
+Hand:
+8 
+8 
+8 
+11 
+Player 8 discards 11
+Player 8 draws 4
+Hand:
+8 
+8 
+8 
+4 
+Player 8 discards 4
+Player 8 draws 1
+Hand:
+8 
+8 
+8 
+1 
+Player 8 discards 1
+Player 8 draws 12
+Hand:
+8 
+8 
+8 
+12 
+Player 8 discards 12
+Player 8 draws 10
+Hand:
+8 
+8 
+8 
+10 
+Player 8 discards 10
+Player 8 draws 2
+Hand:
+8 
+8 
+8 
+2 
+Player 8 discards 2
+Player 8 draws 13
+Hand:
+8 
+8 
+8 
+13 
+Player 8 discards 13
+Player 8 draws 8
+Hand:
+8 
+8 
+8 
+8 
+Victory for player 8

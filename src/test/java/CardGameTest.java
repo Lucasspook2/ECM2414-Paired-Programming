@@ -2,6 +2,8 @@ import org.junit.jupiter.api.*;
 
 //import src.main.java.CardGame;
 
+//import src.main.java.CardGame;
+
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -88,7 +90,7 @@ class CardGameTest {
         assertTrue(output.contains("Invalid input! Illegal number of players"));
         assertTrue(output.contains("Invalid input! Pack not found"));
         assertTrue(output.contains("file chosen = " + packFile.getAbsolutePath()));
-        assertTrue(output.contains("Playing with 5 players"));
+        assertEquals(5, CardGame.getPlayerCount());
         
     }
 

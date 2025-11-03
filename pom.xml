@@ -6,7 +6,7 @@
 
     <groupId>com.cardgame</groupId>
     <artifactId>CardGame</artifactId>
-    <version></version>
+    <version>1.0</version>
 
     <dependencies>
        
@@ -37,7 +37,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>cardgame.CardGame</mainClass>
+                            <mainClass>CardGame</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -54,6 +54,32 @@
                     </includes>
                 </configuration>
             </plugin>
+
+
+        
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/assembly/tests.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-test-zip</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+
+
         </plugins>
     </build>
 

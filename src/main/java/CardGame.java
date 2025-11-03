@@ -13,10 +13,18 @@ public class CardGame extends Thread {
 
     public static ArrayList<Player> playerList = new ArrayList<Player>();
     public static ArrayList<Deck> deckList = new ArrayList<Deck>();
+    private static int player_count;
     
     private static final AtomicBoolean gameOver = new AtomicBoolean(false);
     private static final AtomicInteger winner = new AtomicInteger(-1);
 
+    public static void setPlayerCount(int number){
+        player_count = number;
+    }
+
+    public static int getPlayerCount(){
+        return player_count;
+    }
     //find the winning player 
  
     public int getWinner() {
@@ -75,13 +83,12 @@ public static void endGame(int winner) {
         
         for (Player p : playerList) {//player cleanup and handling
             if (p.getPlayerName() != winnerplayer) {
-                System.out.println("cleaning player " + p.getPlayerName());
                 p.cleanupOnExit(winnerplayer);
             }
         }
         
         for (Deck deck : deckList) {//deck cleanup and finalising
-        System.out.println("writing deck " + deck.getName());
+        
         try (FileWriter fw = deck.getFileWriter()) {
             
             StringBuilder sb = new StringBuilder();
@@ -106,25 +113,6 @@ public static void endGame(int winner) {
 }
 
 
-    /*
-    //need to fix the deck files
-    public static void endGame(int winner){//GAME SHOULD WORK, TESTED TWICE 
-    try{//MUST DELETE DECK AND PLAYER FILES BEFORE RUNNING!!!!!
-        for(Deck i : deckList){
-        i.getFileWriter().write("Deck" + i.getContents().toString());
-    }
-    } catch (IOException e){
-        System.err.println("Could not write to deck output file: " + e.getMessage());
-    }
-    for(Player i : playerList){
-        if (i.getPlayerName() != winner){
-            i.cleanupOnExit(winner);
-        }
-    }
- 
-    }
-    */
-
 
 
     public static void main (String args []){
@@ -139,21 +127,21 @@ public static void endGame(int winner) {
     while (valid == false){
         System.out.println("Please enter the number of players:");
         try{
-        player_count = Integer.parseInt(scanner.nextLine());
+        setPlayerCount(Integer.parseInt(scanner.nextLine()));
         valid = true;
         } catch (NumberFormatException e){
             System.out.println("Invalid input! Wrong number format");
             valid = false;
         }
-        if(player_count <= 1){
+        if(getPlayerCount() <= 1){
             valid = false;
             System.out.println("Invalid input! Illegal number of players");
         }
     }
-    System.out.println("Playing with " + player_count + " players");
+    
 
     //creates a cyclic barrier that awaits the correct number of players 
-    CyclicBarrier barrier = new CyclicBarrier(player_count);
+    CyclicBarrier barrier = new CyclicBarrier(getPlayerCount());
 
     valid = false;
     String pack_name = "";
@@ -163,7 +151,7 @@ public static void endGame(int winner) {
     while(valid == false){
         System.out.println("Please enter location of pack to load:");
          pack_name = scanner.nextLine();
-        if (FileSearch(pack_name) == true && inputPack.countLines(pack_name) == (8 * player_count)){
+        if (FileSearch(pack_name) == true && inputPack.countLines(pack_name) == (8 * getPlayerCount())){
             valid = true;
         } else{
             System.out.println("Invalid input! Pack not found");
@@ -181,7 +169,7 @@ public static void endGame(int winner) {
     ArrayList<Card> pack = inputPack.getPack(pack_name);
     
     //adds players to the list of players 
-    for (int i = 1; i < player_count + 1; i ++){
+    for (int i = 1; i < getPlayerCount() + 1; i ++){
         try{
             playerList.add(new Player(i, i, barrier, new FileWriter("outputs/player"+(i)+"_output.txt", false)));
             //creates output file for each player
@@ -216,7 +204,7 @@ public static void endGame(int winner) {
     
     */
     //creates decks
-    for (int i = 1; i <= player_count; i ++){//one deck for each player
+    for (int i = 1; i <= getPlayerCount(); i ++){//one deck for each player
         try{
             deckList.add(new Deck(i,new FileWriter("outputs/deck"+(i)+"_output.txt", false)));//adds decks to deck list
         } catch (IOException e){
@@ -237,7 +225,7 @@ public static void endGame(int winner) {
     int counter = 0;
     while(pack.size() > 0){
         //System.out.println("Adding card " + pack.get(0).getValue() + " to deck " + deckList.get((counter % player_count)).getName());
-        deckList.get((counter % player_count)).addCard(pack.remove(0));
+        deckList.get((counter % getPlayerCount())).addCard(pack.remove(0));
         counter ++;
     }
 
@@ -256,17 +244,17 @@ public static void endGame(int winner) {
     */
 
     //sets the decks each player should draw / discard to / from for players up to the penultimate one
-    for (int i = 0; i < player_count - 1; i++){
+    for (int i = 0; i < getPlayerCount() - 1; i++){
 
-        playerList.get(i).setDiscardDeck(deckList.get((i+1 % player_count)));
+        playerList.get(i).setDiscardDeck(deckList.get((i+1 % getPlayerCount())));
         playerList.get(i).setDrawDeck(deckList.get(i));
   
     }
 
 
     //sets decks for the last player 
-    playerList.get(player_count-1).setDiscardDeck(deckList.get(0));
-    playerList.get(player_count -1).setDrawDeck(deckList.get(player_count-1));
+    playerList.get(getPlayerCount()-1).setDiscardDeck(deckList.get(0));
+    playerList.get(getPlayerCount() -1).setDrawDeck(deckList.get(getPlayerCount()-1));
 
 
     /* 

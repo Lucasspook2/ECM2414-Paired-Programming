@@ -1,0 +1,211 @@
+player 4 running!
+Player 4 discards 13
+Player 4 draws 13
+Hand:
+5 
+8 
+6 
+13 
+Player 4 discards 5
+Player 4 draws 9
+Hand:
+8 
+6 
+13 
+9 
+Player 4 discards 8
+Player 4 draws 7
+Hand:
+6 
+13 
+9 
+7 
+Player 4 discards 6
+Player 4 draws 14
+Hand:
+13 
+9 
+7 
+14 
+Player 4 discards 13
+Player 4 draws 10
+Hand:
+9 
+7 
+14 
+10 
+Player 4 discards 9
+Player 4 draws 12
+Hand:
+7 
+14 
+10 
+12 
+Player 4 discards 7
+Player 4 draws 1
+Hand:
+14 
+10 
+12 
+1 
+Player 4 discards 14
+Player 4 draws 10
+Hand:
+10 
+12 
+1 
+10 
+Player 4 discards 10
+Player 4 draws 2
+Hand:
+12 
+1 
+10 
+2 
+Player 4 discards 12
+Player 4 draws 4
+Hand:
+1 
+10 
+2 
+4 
+Player 4 discards 1
+Player 4 draws 11
+Hand:
+10 
+2 
+4 
+11 
+Player 4 discards 10
+Player 4 draws 7
+Hand:
+2 
+4 
+11 
+7 
+Player 4 discards 2
+Player 4 draws 9
+Hand:
+4 
+11 
+7 
+9 
+Player 4 discards 11
+Player 4 draws 13
+Hand:
+4 
+7 
+9 
+13 
+Player 4 discards 7
+Player 4 draws 5
+Hand:
+4 
+9 
+13 
+5 
+Player 4 discards 9
+Player 4 draws 7
+Hand:
+4 
+13 
+5 
+7 
+Player 4 discards 13
+Player 4 draws 14
+Hand:
+4 
+5 
+7 
+14 
+Player 4 discards 5
+Player 4 draws 6
+Hand:
+4 
+7 
+14 
+6 
+Player 4 discards 7
+Player 4 draws 8
+Hand:
+4 
+14 
+6 
+8 
+Player 4 discards 14
+Player 4 draws 4
+Hand:
+4 
+6 
+8 
+4 
+Player 4 discards 6
+Player 4 draws 10
+Hand:
+4 
+8 
+4 
+10 
+Player 4 discards 8
+Player 4 draws 12
+Hand:
+4 
+4 
+10 
+12 
+Player 4 discards 10
+Player 4 draws 4
+Hand:
+4 
+4 
+12 
+4 
+Player 4 discards 12
+Player 4 draws 11
+Hand:
+4 
+4 
+4 
+11 
+Player 4 discards 11
+Player 4 draws 14
+Hand:
+4 
+4 
+4 
+14 
+Player 4 discards 14
+Player 4 draws 7
+Hand:
+4 
+4 
+4 
+7 
+Player 4 discards 7
+Player 4 draws 9
+Hand:
+4 
+4 
+4 
+9 
+Player 4 discards 9
+Player 4 draws 13
+Hand:
+4 
+4 
+4 
+13 
+Player 4 discards 13
+Player 4 draws 6
+Hand:
+4 
+4 
+4 
+6 
+Player 8 has informed player: 4 of their victory.
+Player 4 exiting.
+Player 4's final hand:
+4 
+4 
+4 
+6 
