@@ -8,11 +8,10 @@
 
 ### Prerequisites
 - Java 17 or later installed
-- Maven  installed ?? find out how to use: apparently rly good 
 
 ### Using Maven
-If your project uses Maven, run the tests with:
+Install Maven if not already, then run the tests with:
 ```bash
 mvn test
 
-
+in the home directory (where pom.xml is)
